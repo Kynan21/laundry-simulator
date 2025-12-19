@@ -1,0 +1,22 @@
+<table border="1" cellpadding="8">
+  <tr>
+    <th>No</th>
+    <th>Nama Customer</th>
+    <th>Jenis</th>
+    <th>Jumlah</th>
+    <th>Aksi</th>
+  </tr>
+
+  <% orders.forEach((order, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= order.Customer.name %></td>
+      <td><%= order.jenis %></td>
+      <td><%= order.jumlah %></td>
+      <td>
+        <a href="/orders/edit/<%= order.id %>">Edit</a> |
+        <a href="/orders/delete/<%= order.id %>">Hapus</a>
+      </td>
+    </tr>
+  <% }) %>
+</table>

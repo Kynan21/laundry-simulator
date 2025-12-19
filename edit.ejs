@@ -1,0 +1,22 @@
+<h2>Edit Pesanan Laundry</h2>
+
+<form action="/orders/edit/<%= order.id %>" method="post">
+  <p>
+    Nama:
+    <input type="text" value="<%= order.Customer.name %>" disabled>
+  </p>
+
+  <p>
+    Jenis:
+    <input type="text" name="jenis" value="<%= order.jenis %>">
+  </p>
+
+  <p>
+    Jumlah:
+    <input type="number" name="jumlah" value="<%= order.jumlah %>">
+  </p>
+
+  <button type="submit">Update</button>
+</form>
+
+<a href="/orders">Batal</a>
