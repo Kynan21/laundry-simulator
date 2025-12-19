@@ -1,6 +1,11 @@
 class Machine {
-  start() {
-    return "Mesin siap digunakan";
+  constructor(nama, speed) {
+    this.nama = nama;
+    this.speed = speed;
+  }
+
+  hitungWaktu(jumlah) {
+    return jumlah * this.speed;
   }
 }
 
