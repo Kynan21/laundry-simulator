@@ -1,11 +1,10 @@
 class Machine {
-  constructor(nama, speed) {
+  constructor(nama) {
     this.nama = nama;
-    this.speed = speed;
   }
 
-  hitungWaktu(jumlah) {
-    return jumlah * this.speed;
+  getNama() {
+    return this.nama;
   }
 }
 
