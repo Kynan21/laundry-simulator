@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path'); //
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
+const LaundryMachine = require('./models/laundrymachine');
 
 const Order = require('./models/order');
 const LaundryMachine = require('./models/laundrymachine');
@@ -11,6 +12,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const mesin1 = new LaundryMachine('Mesin 1');
+const mesin2 = new LaundryMachine('Mesin 2');
+const mesin3 = new LaundryMachine('Mesin 3');
 
 app.set('view engine', 'ejs');
 app.set('layout', 'layout');
@@ -25,7 +30,7 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/result', async (req, res) => {
-  const { nama, jenis, jumlah } = req.body;
+  const { nama, jenis, jumlah, mesin } = req.body;
 
   const orderLogic = new Order(nama, jenis, Number(jumlah));
 
@@ -47,7 +52,8 @@ app.post('/result', async (req, res) => {
     jenis,
     jumlah,
     estimasi,
-    rekomendasi
+    rekomendasi,
+    mesin
   });
 });
 
@@ -98,5 +104,6 @@ async function startServer() {
     console.log('Server berjalan di http://localhost:3000');
   });
 }
+
 
 startServer();
